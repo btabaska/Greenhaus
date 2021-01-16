@@ -1,1 +1,44 @@
-<h1>{{plants}}</h1>
+<div class="header">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</div>
+
+{{!-- Include in Form
+-User (Entered or auto pulled from login?)
+-Name
+-Date
+-Image
+-last watered
+-last fed
+--}}
+<div class="addPlant">
+    <h2>Add a plant to GreenHaus</h2>
+    <form>
+        <div class="form-group">
+            <label for="plantName">Name of Plant</label>
+            <input type="text" id="plantName" name="name">
+        </div>
+
+        <button type="submit" id="addPlantBtn">Add Plant.</button>
+    </form>
+</div>
+<div class="plantDisplay">
+    <h2>Plants in the GreenHaus</h2>
+    <ul class="plant_list">
+        {{#each plants}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+</div>
+
+
+{{!-- Thoughts:
+What do we want to have displayed?
+All Plants
+Watered Plants
+Plants that need Water
+Make these available via dropdown menu?--}}
