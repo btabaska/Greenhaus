@@ -11,5 +11,15 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  Image.associate = (models) => {
+    //We are saying that an Image should belong to a Plant
+    //An image can't be created without a Plant due to the foreign key constraint
+    Image.belongsTo(models.Plant, {
+      foreignkey: {
+        allowNull: false,
+      },
+    });
+  };
+
   return Image;
 };
