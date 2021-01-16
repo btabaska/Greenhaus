@@ -12,6 +12,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       len: [1],
     },
+    image: {
+      type: DataTypes.BLOB("long"),
+    },
+    lastfed: {
+      type: DataTypes.STRING,
+    },
+    info: {
+      type: DataTypes.TEXT,
+    },
+    gif: {
+      type: DataTypes.BLOB("long"),
+    },
   });
 
   Plant.associate = (models) => {
