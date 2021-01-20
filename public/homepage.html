@@ -6,16 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>GreenHaus | Plant Care Tracking App</title>
-<!-- Latest compiled and minified CSS & JS -->
+<!-- BootStrap Latest compiled and minified CSS & JS -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+
+<!-- Materialize Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Materialized Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+<link rel="shortcut icon" href="leaf64.png" type="image/png">
+<!--Icons-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
+<nav>
+    <div class="nav-wrapper green lighten-4">
+        <img src="./css/leaf64.png" class="brand-logo"></img>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="plants.html">Plants</a></li>
+            <li><a href="user-manager.html">Users</a></li>
+        </ul>   
+    </div>
+</nav>
 
 <body>
     <div class="container hidden">
         <div class="row top-30">
             <div class="col-md-2 col-sm-2">
-                <a class="btn btn-light" href="/blog">Go to Blog</a>
+                <a class="btn btn-light" href="/blog">Go to Plants</a>
             </div>
             <div class="col-md-2 col-sm-2">
                 <a class="btn btn-light" href="/users">Manage Users</a>
@@ -36,7 +55,12 @@
                     </select>
                 </div>
                 <br />
-                <button type="submit" class="btn btn-success submit">Submit</button>
+                <button class="btn waves-effect waves-light submit" type="submit" name="action">Submit
+                    <i class="material-icons right">local_florist</i>
+                </button>
+                <button type="submit" class="btn btn-success submit">Submit 
+                    <i class="material-icons right">spa</i>
+                </button>
                 </div>
             </form>
             </div>
@@ -44,6 +68,7 @@
     </div>
     <!-- Custom Script -->
     <script src="js/cms.js" type="text/javascript"></script>
+
 
 </body>
 
