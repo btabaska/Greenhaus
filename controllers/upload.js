@@ -19,6 +19,7 @@ const uploadFiles = async (req, res) => {
       data: fs.readFileSync(
         __basedir + "/resources/static/assets/uploads/" + req.file.filename
       ),
+      PlantId: 1,
     }).then((image) => {
       fs.writeFileSync(
         __basedir + "/resources/static/assets/tmp/" + image.name,
