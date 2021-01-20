@@ -104,6 +104,8 @@ dist
 .tern-port
 
 # Image Uploads
-./resources/static/assets/uploads/
-./resources/static/assets/tmp/
-./resources/static/assets/resources/
+resources/static/assets/uploads/
+resources/static/assets/tmp/
+resources/static/assets/resources/
+resources/static/assets/uploads/*
+.DS_Store

@@ -24,6 +24,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Plant.associate = (models) => {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    Plant.hasMany(models.Image, {
+      onDelete: "cascade",
+    });
+  };
+
+  Plant.associate = (models) => {
     // We're saying that a Plant should belong to an User
     // A Plant can't be created without a User due to the foreign key constraint
     Plant.belongsTo(models.User, {
