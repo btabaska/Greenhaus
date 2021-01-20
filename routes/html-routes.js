@@ -8,8 +8,6 @@ const upload = require("../middleware/upload");
 
 // Routes
 let routes = (app) => {
-  //Upload Page
-  router.get("/uploads", homeController.getHome);
   //Home Page
   router.get("/", (req, res) =>
     res.sendFile(path.join(__dirname, "../public/index.html"))
@@ -25,15 +23,10 @@ let routes = (app) => {
     res.sendFile(path.join(__dirname, "../public/plants.html"))
   );
 
-  // no idea what to do with this route right now.
-  router.get("/users", (req, res) =>
-    res.sendFile(path.join(__dirname, "../public/user.html"))
-  );
+  //Upload Page
+  router.get("/uploads", homeController.getHome);
   router.post("/upload", upload.single("file"), uploadController.uploadFiles);
-
   return app.use("/", router);
 };
 
 module.exports = routes;
-
-let routes = (app) => {};
