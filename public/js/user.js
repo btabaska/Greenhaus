@@ -1,140 +1,126 @@
-//TODO ADD USER JS BASED ON AUTHOR.JS
-// Wait for the DOM to completely load before we run our JS
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded! 🚀');
-  
-    const nameInput = document.getElementById('author-name');
-    const authorList = document.querySelector('tbody');
-  
-    // Create an author
-    const insertAuthor = (authorData) => {
-    fetch('/api/authors', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(authorData),
+document.addEventListener("DOMContentLoaded", () => {
+  const nameInput = document.getElementById("user-name");
+  const userList = document.querySelector("tbody");
+
+  // Create a user
+  const insertuser = (userData) => {
+    fetch("/api/users", {
+      method: "plant",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
     })
-        .then(getAuthors)
-        .catch((err) => console.error(err));
-    };
-  
-    // Handle when the author form is submitted
-    const handleAuthorFormSubmit = (e) => {
+      .then(getusers)
+      .catch((err) => console.error(err));
+  };
+  const handleuserFormSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!nameInput.value.trim()) {
-        alert('Please provide an author name');
-        return;
+      alert("Please provide an user name");
+      return;
     }
-  
-    insertAuthor({
-        name: nameInput.value.trim(),
+
+    insertuser({
+      name: nameInput.value.trim(),
     });
-    };
-  
-    document
-    .getElementById('author-form')
-    .addEventListener('submit', handleAuthorFormSubmit);
-  
-    // Event handler for the delete author button
-    const handleDeleteButtonPress = (e) => {
+  };
+
+  document
+    .getElementById("user-form")
+    .addEventListener("submit", handleuserFormSubmit);
+
+  const handleDeleteButtonPress = (e) => {
     const { id } = e.target.parentElement.parentElement;
-    fetch(`/api/authors/${id}`, {
-        method: 'DELETE',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-    }).then(getAuthors);
-    };
-  
-    // Create list row for authors
-    const createAuthorRow = (authorData) => {
-    const tr = document.createElement('tr');
-    tr.setAttribute('data-author', JSON.stringify(authorData));
-  
-      // Set each author's ID on the element itself
-    tr.id = authorData.id;
-  
-    const td = document.createElement('td');
-    td.textContent = authorData.name;
+    fetch(`/api/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(getusers);
+  };
+
+  // Create list row for users
+  const createuserRow = (userData) => {
+    const tr = document.createElement("tr");
+    tr.setAttribute("data-user", JSON.stringify(userData));
+
+    // Set each user's ID on the element itself
+    tr.id = userData.id;
+
+    const td = document.createElement("td");
+    td.textContent = userData.name;
     tr.appendChild(td);
 
-      // Element to show how many posts
-    const lengthTd = document.createElement('td');
-    if (authorData.Posts) {
-        lengthTd.textContent = authorData.Posts.length;
+    // Element to show how many plants
+    const lengthTd = document.createElement("td");
+    if (userData.plants) {
+      lengthTd.textContent = userData.plants.length;
     } else {
-        lengthTd.textContent = '0';
+      lengthTd.textContent = "0";
     }
     tr.appendChild(lengthTd);
-  
-      // "Go to posts" link
-    const postsLink = document.createElement('td');
-    postsLink.innerHTML = `<td><a href='/blog?author_id=${authorData.id}'>Go to Posts</a></td>`;
-    tr.appendChild(postsLink);
-  
-      // "Create a post" link
-    const createLink = document.createElement('td');
-    createLink.innerHTML = `<td><a href='/cms?author_id=${authorData.id}'>Create a Post</a></td>`;
-    tr.appendChild(createLink);
-  
-      // "Delete author" link
-    const deleteLink = document.createElement('td');
-    deleteLink.innerHTML = `<td><a style='cursor:pointer;color:red' class='delete-author'>Delete Author</a></td>`;
-    deleteLink.addEventListener('click', handleDeleteButtonPress);
+
+    // User Plants Page Link
+    const plantsLink = document.createElement("td");
+    plantsLink.innerHTML = `<td><a href='/plants?user_id=${userData.id}'>Go to Plants</a></td>`;
+    tr.appendChild(plantsLink);
+
+    // "Delete user" link
+    const deleteLink = document.createElement("td");
+    deleteLink.innerHTML = `<td><a style='cursor:pointer;color:red' class='delete-user'>Delete user</a></td>`;
+    deleteLink.addEventListener("click", handleDeleteButtonPress);
     tr.appendChild(deleteLink);
-  
-      // Return the table row
+
+    // Return the table row
     return tr;
-    };
-  
-    // Helper function to render content when there are no authors
-    const renderEmpty = () => {
-    const alertDiv = document.createElement('div');
-    alertDiv.classList.add('alert', 'alert-danger');
-    alertDiv.textContent = 'Must have at least one author to post';
-    alertDiv.id = 'removeMe';
-    alertDiv.style.marginRight = '5px';
+  };
+
+  // Helper function to render content when there are no users
+  const renderEmpty = () => {
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-danger");
+    alertDiv.textContent = "Must have at least one user to plant";
+    alertDiv.id = "removeMe";
+    alertDiv.style.marginRight = "5px";
     return alertDiv;
-    };
-  
-    const renderAuthorList = (rows) => {
-    authorList.innerHTML = '';
-  
+  };
+
+  const renderuserList = (rows) => {
+    userList.innerHTML = "";
+
     if (rows.length) {
-        if (document.getElementById('removeMe')) {
-        document.getElementById('removeMe').remove();
-        }
-        rows.forEach((row) => authorList.append(row));
+      if (document.getElementById("removeMe")) {
+        document.getElementById("removeMe").remove();
+      }
+      rows.forEach((row) => userList.append(row));
     } else {
-        document.querySelector('.author-container').appendChild(renderEmpty());
+      document.querySelector(".user-container").appendChild(renderEmpty());
     }
-    };
-  
-    // Grab all the authors
-    const getAuthors = () => {
-    console.log('Get authors is getting called');
-    fetch('/api/authors', {
-        method: 'GET',  
-        headers: {
-        'Content-Type': 'application/json',
-        },
+  };
+
+  // Grab all the users
+  const getusers = () => {
+    fetch("/api/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log('Success in getting authors:', authors);
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log('Success in getting users:', users);
         const rowsToAdd = [];
         for (let i = 0; i < data.length; i++) {
-            rowsToAdd.push(createAuthorRow(data[i]));
+          rowsToAdd.push(createuserRow(data[i]));
         }
-        renderAuthorList(rowsToAdd);
-        nameInput.value = '';
-        })
-        .catch((error) => console.error('Error:', error));
-    };
-  
-    // Get the list of authors
-    getAuthors();
-  });
-  
+        renderuserList(rowsToAdd);
+        nameInput.value = "";
+      })
+      .catch((error) => console.error("Error:", error));
+  };
+
+  // Get the list of users
+  getusers();
+});
