@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create a user
   const insertuser = (userData) => {
     fetch("/api/users", {
-      method: "POST",
+      method: "plant",
       headers: {
         "Content-Type": "application/json",
       },
@@ -53,24 +53,19 @@ document.addEventListener("DOMContentLoaded", () => {
     td.textContent = userData.name;
     tr.appendChild(td);
 
-    // Element to show how many posts
+    // Element to show how many plants
     const lengthTd = document.createElement("td");
-    if (userData.Posts) {
-      lengthTd.textContent = userData.Posts.length;
+    if (userData.plants) {
+      lengthTd.textContent = userData.plants.length;
     } else {
       lengthTd.textContent = "0";
     }
     tr.appendChild(lengthTd);
 
-    // "Go to posts" link
-    const postsLink = document.createElement("td");
-    postsLink.innerHTML = `<td><a href='/plants?user_id=${userData.id}'>Go to Plants</a></td>`;
-    tr.appendChild(postsLink);
-
-    // "Create a post" link
-    const createLink = document.createElement("td");
-    createLink.innerHTML = `<td><a href='/cms?user_id=${userData.id}'>Add a Plant</a></td>`;
-    tr.appendChild(createLink);
+    // User Plants Page Link
+    const plantsLink = document.createElement("td");
+    plantsLink.innerHTML = `<td><a href='/plants?user_id=${userData.id}'>Go to Plants</a></td>`;
+    tr.appendChild(plantsLink);
 
     // "Delete user" link
     const deleteLink = document.createElement("td");
@@ -86,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const renderEmpty = () => {
     const alertDiv = document.createElement("div");
     alertDiv.classList.add("alert", "alert-danger");
-    alertDiv.textContent = "Must have at least one user to post";
+    alertDiv.textContent = "Must have at least one user to plant";
     alertDiv.id = "removeMe";
     alertDiv.style.marginRight = "5px";
     return alertDiv;
