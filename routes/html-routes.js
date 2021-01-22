@@ -10,7 +10,7 @@ const upload = require("../middleware/upload");
 let routes = (app) => {
   //Home Page
   router.get("/", (req, res) =>
-    res.sendFile(path.join(__dirname, "../public/index.html"))
+    res.sendFile(path.join(__dirname, "../public/homepage.html"))
   );
 
   // user manager route
