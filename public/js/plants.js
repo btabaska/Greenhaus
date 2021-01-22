@@ -3,18 +3,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded! 🚀');
   
-    const blogContainer = document.querySelector('.blog-container');
+    const plantContainer = document.querySelector('.plant-container');
   
     // Variable to hold our posts
-    let posts;
+    let plants;
   
-    const getPosts = (author) => {
-    authorId = author || '';
-    if (authorId) {
-        authorId = `/?author_id=${authorId}`;
+    const getPlants = (user) => {
+    userId = user || '';
+    if (userId) {
+        userId = `/?user_id=${userId}`;
     }
   
-    fetch(`/api/posts${authorId}`, {
+    fetch(`/api/plants${userId}`, {
         method: 'GET',
         headers: {
         'Content-Type': 'application/json',
@@ -25,47 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
         posts = data;
         console.log('Success in getting posts:', data);
         if (!data || !data.length) {
-            displayEmpty(author);
+            displayEmpty(user);
         } else {
             initializeRows();
         }
         })
         .catch((error) => console.error('Error:', error));
     };
-  
-    // Get a blog post from a specific author
+
+    // Get a plant from a specific user
     const url = window.location.search;
-    let authorId;
-    if (url.indexOf('?author_id=') !== -1) {
-    authorId = url.split('=')[1];
-    getPosts(authorId);
+    let userId;
+    if (url.indexOf('?user_id=') !== -1) {
+    userId = url.split('=')[1];
+    getPlants(userId);
     } else {
-    getPosts();
+    getPlants();
     }
-  
-    // Front end call to DELETE a post
-    const deletePost = (id) => {
-    fetch(`/api/posts/${id}`, {
+
+    // Front end call to DELETE (kill) a plant
+    const deletePlant = (id) => {
+    fetch(`/api/plants/${id}`, {
         method: 'DELETE',
         headers: {
         'Content-Type': 'application/json',
         },
-    }).then(getPosts());
+    }).then(getPlants());
     };
   
-    // Create HTML rows for the blog container
+    // Create HTML rows for the blog container **UPDATE: blogContainer name**
     const initializeRows = () => {
-    blogContainer.innerHTML = '';
-    const postsToAdd = [];
+    plantContainer.innerHTML = '';
+    const plantsToAdd = [];
 
-    posts.forEach((post) => postsToAdd.push(createNewRow(post)));
-    postsToAdd.forEach((post) => blogContainer.append(post));
+    plants.forEach((plant) => plantsToAdd.push(createNewRow(plant)));
+    plantsToAdd.forEach((plant) => plantContainer.append(plant));
     };
 
-    const createNewRow = (post) => {
-    console.log('createNewRow -> post', post);
+    const createNewRow = (plant) => {
+    console.log('createNewRow -> plant', plant);
 
-    const formattedDate = new Date(post.createdAt).toLocaleDateString();
+    const formattedDate = new Date(plant.createdAt).toLocaleDateString();
 
     const newPostCard = document.createElement('div');
     newPostCard.classList.add('card');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newPostCardHeading = document.createElement('div');
     newPostCardHeading.classList.add('card-header');
   
-      // Delete button
+      // Delete button **UPDATE PostDelete**
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'x';
     deleteBtn.classList.add('delete', 'btn', 'btn-danger');
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newPostDate = document.createElement('small');
     const newPostAuthor = document.createElement('h5');
 
-    newPostAuthor.textContent = `Written by: ${post.Author.name}`;
+    newPostAuthor.textContent = `Written by: ${plant.User.name}`;
     newPostAuthor.style.float = 'right';
     newPostAuthor.style.color = 'blue';
     newPostAuthor.style.marginTop = '-10px';
@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
     newPostCardBody.classList.add('card-body');
 
     const newPostBody = document.createElement('p');
-    newPostTitle.textContent = `${post.title} `;
-    newPostBody.textContent = post.body;
+    newPostTitle.textContent = `${plant.title} `;
+    newPostBody.textContent = plant.body;
     newPostDate.textContent = ` (${formattedDate})`;
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
-    newPostCard.setAttribute('data-post', JSON.stringify(post));
+    newPostCard.setAttribute('data-plant', JSON.stringify(plant));
 
-    console.log('createNewRow -> newPostCard', newPostCard);
-    return newPostCard;
+    console.log('createNewRow -> newPlantCard', newPlantCard);
+    return newPlantCard;
     };
 
     // Helper function to display something when there are no posts
@@ -120,21 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const query = window.location.search;
     let partial = '';
     if (id) {
-        partial = ` for Author #${id}`;
+        partial = ` for User #${id}`;
     }
-
-    blogContainer.innerHTML = '';
+    //***Update blogContainer name
+    plantContainer.innerHTML = '';
     const messageH2 = document.createElement('h2');
     messageH2.style.textAlign = 'center';
     messageH2.style.marginTop = '50px';
-    messageH2.innerHTML = `No posts yet${partial}, navigate <a href='/cms${query}'>here</a> in order to get started.`;
-    blogContainer.append(messageH2);
+    messageH2.innerHTML = `No plants in${partial}, navigate <a href='/cms${query}'>here</a> in order to get your GreenHaus started.`;
+    plantContainer.append(messageH2);
     };
   
     // Handle when we click the delete post button
-    const handlePostDelete = (e) => {
-    const currentPost = JSON.parse(
-        e.target.parentElement.parentElement.dataset.post
+    const handlePlantDelete = (e) => {
+    const currentPlant = JSON.parse(
+        e.target.parentElement.parentElement.dataset.plant
     );
 
     deletePost(currentPost.id);
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Handle when we click the edit post button
     const handlePostEdit = (e) => {
-    const currentPost = JSON.parse(
-        e.target.parentElement.parentElement.dataset.post
+    const currentPlant = JSON.parse(
+        e.target.parentElement.parentElement.dataset.plant
     );
 
-    window.location.href = `/cms?post_id=${currentPost.id}`;
+    window.location.href = `/?plant_id=${currentPost.id}`;
     };
 });
