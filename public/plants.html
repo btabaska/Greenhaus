@@ -23,25 +23,38 @@
             <li><a href="/">Home</a></li>
             <li><a href="/plants">Plants</a></li>
             <li><a href="/users">Users</a></li>
-        </ul>   
+        </ul>
     </div>
 </nav>
 
 <body>
     <div class="container plant">
         <div class="row">
-        <div class="col-md-2 col-sm-2">
-            <a class="btn btn-light" href="/">New Plant</a>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <a class="btn btn-light" href="/user">Manage Users</a>
-        </div>
+            <div class="col-md-2 col-sm-2">
+                <a class="btn btn-light" href="/">New Plant</a>
+            </div>
+            <div class="col-md-2 col-sm-2">
+                <a class="btn btn-light" href="/user">Manage Users</a>
+            </div>
         </div>
         <div class="row">
-        <div class="col-md-12 plant-container">
-        </div>
+            <div class="col-md-12 plant-container">
+            </div>
         </div>
     </div>
+
+    <!-- <div class="addPlant">
+        <h2>Add a plant to GreenHaus</h2>
+        <form>
+            <div class="form-group">
+                <label for="plantName">Name of Plant</label>
+                <input type="text" id="plantName" name="name">
+            </div>
+
+            <button type="submit" id="addPlantBtn">Add Plant.</button>
+        </form>
+    </div> -->
+
     <!-- Custom Script -->
     <script src="js/plants.js" type="text/javascript"></script>
 
@@ -49,22 +62,12 @@
 
 </html>
 
-<div class="addPlant">
-    <h2>Add a plant to GreenHaus</h2>
-    <form>
-        <div class="form-group">
-            <label for="plantName">Name of Plant</label>
-            <input type="text" id="plantName" name="name">
-        </div>
 
-        <button type="submit" id="addPlantBtn">Add Plant.</button>
-    </form>
-</div>
-<div class="plantDisplay">
+<!-- <div class="plantDisplay">
     <h2>Plants in the GreenHaus</h2>
     <ul class="plant_list">
         {{#each plants}}
         <li>{{this}}</li>
         {{/each}}
     </ul>
-</div>
+</div> -->
