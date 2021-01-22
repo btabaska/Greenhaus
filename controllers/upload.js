@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 const db = require("../models");
-const Image = db.image;
+const Image = db.Image;
 
 const uploadFiles = async (req, res) => {
   try {
@@ -19,7 +19,6 @@ const uploadFiles = async (req, res) => {
       data: fs.readFileSync(
         __basedir + "/resources/static/assets/uploads/" + req.file.filename
       ),
-      PlantId: 1,
     }).then((image) => {
       fs.writeFileSync(
         __basedir + "/resources/static/assets/tmp/" + image.name,
