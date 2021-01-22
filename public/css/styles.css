@@ -1,1 +1,7 @@
 /* TODO: ADD CSS */
+body {
+  background-image: url("../css/palm-leaf.png");
+}
+.brand-logo {
+  padding: 10px;
+}
