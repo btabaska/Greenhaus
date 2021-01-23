@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Delete button **UPDATE PostDelete**
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "x";
+    deleteBtn.textContent = "KILL";
     deleteBtn.classList.add("delete", "btn", "btn-danger");
     deleteBtn.addEventListener("click", handlePlantDelete);
 
@@ -84,6 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
     editButton.textContent = "EDIT";
     editButton.classList.add("edit", "btn", "btn-info");
     editButton.addEventListener("click", handlePlantEdit);
+
+    //last watered button
+    const waterButton = document.createElement("button");
+    waterButton.textContent = "Water plant";
+    waterButton.classList.add("water", "btn", "btn-info");
+    waterButton.addEventListener("click", waterPlantUpdate);
+    waterButton.setAttribute("id", plant.id);
 
     const newPlantName = document.createElement("h2");
     const newPlantDate = document.createElement("small");
@@ -100,13 +107,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const newPlantBody = document.createElement("p");
     newPlantName.textContent = plant.name;
     newPlantBody.textContent = plant.note;
+
+    // last fed function to show last time plant was fed.
+    const lastFedBody = document.createElement("p");
+    lastFedBody.setAttribute("id", plant.id);
+    if (plant.lastfed === null) {
+      lastFedBody.textContent = "Never been fed.";
+    } else {
+      lastFedBody.textContent = plant.lastfed;
+    }
+
     newPlantDate.textContent = ` (${formattedDate})`;
     newPlantName.append(newPlantDate);
     newPlantCardHeading.append(deleteBtn);
     newPlantCardHeading.append(editButton);
+    newPlantCardHeading.append(waterButton);
     newPlantCardHeading.append(newPlantName);
     newPlantCardHeading.append(newPlantUser);
     newPlantCardBody.append(newPlantBody);
+    newPlantCardBody.append(lastFedBody);
     newPlantCard.append(newPlantCardHeading);
     newPlantCard.append(newPlantCardBody);
     newPlantCard.setAttribute("data-plant", JSON.stringify(plant));
@@ -147,5 +166,21 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     window.location.href = `/?plant_id=${currentPlant.id}`;
+  };
+
+  //last fed handling
+  const waterPlantUpdate = (e) => {
+    fetch(`/api/plants/${e.target.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        plants = data;
+        console.log(plants);
+      })
+      .catch((error) => console.error("Error:", error));
   };
 });
