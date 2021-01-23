@@ -5,3 +5,13 @@ body {
 .brand-logo {
   padding: 10px;
 }
+.bkg-img {
+  background-image: url("../css/sfconservatory-bkg.jpeg");
+  background-repeat: no-repeat;
+  height: 60%;
+  background-size: cover;
+}
+
+.homenav {
+  padding: 10px;
+}
