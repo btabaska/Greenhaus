@@ -15,7 +15,7 @@ let routes = (app) => {
   
   //Add Plant Page
   router.get("/add-plant", (req, res) =>
-    res.sendFile(path.join(__dirname, "../public/homepage.html"))
+    res.sendFile(path.join(__dirname, "../public/addplant.html"))
   );
 
   // user manager route
