@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Element to show how many plants
     const lengthTd = document.createElement("td");
-    if (userData.plants) {
-      lengthTd.textContent = userData.plants.length;
+    if (userData.Plants) {
+      lengthTd.textContent = JSON.stringify(userData.Plants.length);
     } else {
       lengthTd.textContent = "0";
     }
