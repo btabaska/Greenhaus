@@ -179,8 +179,19 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         plants = data;
-        console.log(plants);
+        plants.lastfed = new Date().toLocaleDateString();
+        fetch("/api/plants", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(plants),
+        })
+          .then((response) => response.json())
+          .then(location.reload());
       })
       .catch((error) => console.error("Error:", error));
   };
+
+  const fetchPlantImages = () => {};
 });
