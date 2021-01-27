@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Delete button **UPDATE PostDelete**
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "KILL";
+    deleteBtn.textContent = "Killed Plant";
     deleteBtn.classList.add("delete", "btn", "btn-danger");
     deleteBtn.addEventListener("click", handlePlantDelete);
 
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageH2 = document.createElement("h2");
     messageH2.style.textAlign = "center";
     messageH2.style.marginTop = "50px";
-    messageH2.innerHTML = `No plants in${partial}, navigate <a href='/cms${query}'>here</a> in order to get your GreenHaus started.`;
+    messageH2.innerHTML = `No plants in${partial}, navigate <a href='/${query}'>here</a> in order to get your GreenHaus started.`;
     plantContainer.append(messageH2);
   };
 
