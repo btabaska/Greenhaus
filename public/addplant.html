@@ -7,9 +7,6 @@
 <head>
     <meta charset="UTF-8">
     <title>GreenHaus | Plant Care Tracking App</title>
-    <!-- BootStrap Latest compiled and minified CSS & JS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-
     <!-- Materialize Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Materialized Compiled and minified JavaScript -->
@@ -21,11 +18,12 @@
 </head>
 
 <nav>
-    <div class="nav-wrapper green lighten-4">
+    <div class="nav-wrapper green lighten-2">
         <img src="./css/leaf64.png" class="brand-logo"></img>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
-            <li><a href="/plants">Plants</a></li>
+            <li><a href="/add-plant">Add Plant</a></li>
+            <li><a href="/plants">View Plants</a></li>
             <li><a href="/users">Users</a></li>
         </ul>
     </div>
@@ -33,16 +31,16 @@
 
 <body>
     <div class="container hidden">
-        <div class="row top-30">
+        <!-- <div class="row top-30">
             <div class="col-md-2 col-sm-2">
                 <a class="btn btn-light" href="/plants">Go to Plants</a>
             </div>
             <div class="col-md-2 col-sm-2">
                 <a class="btn btn-light" href="/users">Manage Users</a>
             </div>
-        </div>
+        </div> -->
         <div class="row">
-            <div class="col-md-6 offset-md-3">
+            <div class="col l6">
                 <form id="cms">
                     <div class="form-group">
                         <label for="name">Plant Name:</label>
@@ -58,9 +56,6 @@
                         <br />
                         <button class="btn waves-effect waves-light submit" type="submit" name="action">Submit
                             <i class="material-icons right">local_florist</i>
-                        </button>
-                        <button type="submit" class="btn btn-success submit">Submit
-                            <i class="material-icons right">spa</i>
                         </button>
                     </div>
                 </form>
