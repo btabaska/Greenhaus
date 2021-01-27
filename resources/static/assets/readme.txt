@@ -1,0 +1,1 @@
+Resources/assets can be added to this folder as desired.

@@ -1,32 +1,27 @@
 // Dependencies
-const path = require("path");
-const express = require("express");
-const router = express.Router();
-const homeController = require("../controllers/home");
-const uploadController = require("../controllers/upload");
-const upload = require("../middleware/upload");
+const path = require('path');
 
 // Routes
-let routes = (app) => {
-  //Home Page
-  router.get("/", (req, res) =>
-    res.sendFile(path.join(__dirname, "../public/homepage.html"))
+module.exports = (app) => {
+  // Each of the below routes just handles the HTML page that the user gets sent to.
+
+  // index route loads view.html
+  app.get('/', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/plants.html'))
   );
 
-  // user manager route
-  router.get("/users", (req, res) =>
-    res.sendFile(path.join(__dirname, "../public/user-manager.html"))
+  // cms route loads cms.html
+  app.get('/cms', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/cms.html'))
   );
 
-  // plants route goes to plants.html
-  router.get("/plants", (req, res) =>
-    res.sendFile(path.join(__dirname, "../public/plants.html"))
+  // blog route loads blog.html
+  app.get('/blog', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/blog.html'))
   );
 
-  //Upload Page
-  router.get("/uploads", homeController.getHome);
-  router.post("/upload", upload.single("file"), uploadController.uploadFiles);
-  return app.use("/", router);
+  // authors route loads author-manager.html
+  app.get('/authors', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/author-manager.html'))
+  );
 };
-
-module.exports = routes;
