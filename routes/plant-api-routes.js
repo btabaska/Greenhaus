@@ -19,7 +19,7 @@ module.exports = (app) => {
   //get route for retrieving info from a single plant
   app.get("/api/plants/:id", (req, res) => {
     db.Plant.findOne({
-      wher: {
+      where: {
         id: req.params.id,
       },
       include: [db.User],
