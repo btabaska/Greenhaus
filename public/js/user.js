@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create a user
   const insertuser = (userData) => {
     fetch("/api/users", {
-      method: "plant",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
