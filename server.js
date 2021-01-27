@@ -4,6 +4,7 @@ const db = require("./models");
 const initRoutes = require("./routes/html-routes.js");
 const plantRoutes = require("./routes/plant-api-routes.js");
 const userRoutes = require("./routes/user-api-routes.js");
+const imageRoutes = require("./routes/image-api-routes");
 
 global.__basedir = __dirname;
 
@@ -12,6 +13,7 @@ app.use(express.json());
 initRoutes(app);
 plantRoutes(app);
 userRoutes(app);
+imageRoutes(app);
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));

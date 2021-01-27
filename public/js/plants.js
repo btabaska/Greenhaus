@@ -65,6 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const createNewRow = (plant) => {
     console.log("createNewRow -> plant", plant);
 
+    const fetchPlantImages = (plant) => {
+      fetch(`/api/images/${plant.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        console.log(response);
+        const image = document.createElement("img");
+        image.setAttribute("src", response.url);
+        image.setAttribute(
+          "style",
+          "max-width:200px;width:100%;justify-content:end"
+        );
+        newPlantBody.appendChild(image);
+      });
+    };
+    fetchPlantImages(plant);
+
     const formattedDate = new Date(plant.createdAt).toLocaleDateString();
 
     const newPlantCard = document.createElement("div");
@@ -75,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Delete button **UPDATE PostDelete**
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "KILL";
+    deleteBtn.textContent = "Killed Plant";
     deleteBtn.classList.add("delete", "btn", "btn-danger");
     deleteBtn.addEventListener("click", handlePlantDelete);
 
@@ -146,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageH2 = document.createElement("h2");
     messageH2.style.textAlign = "center";
     messageH2.style.marginTop = "50px";
-    messageH2.innerHTML = `No plants in${partial}, navigate <a href='/cms${query}'>here</a> in order to get your GreenHaus started.`;
+    messageH2.innerHTML = `No plants in${partial}, navigate <a href='/${query}'>here</a> in order to get your GreenHaus started.`;
     plantContainer.append(messageH2);
   };
 
@@ -179,7 +198,16 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         plants = data;
-        console.log(plants);
+        plants.lastfed = new Date().toLocaleDateString();
+        fetch("/api/plants", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(plants),
+        })
+          .then((response) => response.json())
+          .then(location.reload());
       })
       .catch((error) => console.error("Error:", error));
   };
