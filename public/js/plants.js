@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (plant.lastfed === null) {
       lastFedBody.textContent = "Never been fed.";
     } else {
-      lastFedBody.textContent = plant.lastfed;
+      lastFedBody.textContent = `This plant was last fed on: ${plant.lastfed}`;
     }
 
     newPlantDate.textContent = ` (${formattedDate})`;
