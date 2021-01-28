@@ -65,6 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const createNewRow = (plant) => {
     console.log("createNewRow -> plant", plant);
 
+    const fetchPlantImages = (plant) => {
+      fetch(`/api/images/${plant.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        console.log(response);
+        const image = document.createElement("img");
+        image.setAttribute("src", response.url);
+        image.setAttribute(
+          "style",
+          "max-width:200px;width:100%;justify-content:end"
+        );
+        newPlantBody.appendChild(image);
+      });
+    };
+    fetchPlantImages(plant);
+
     const formattedDate = new Date(plant.createdAt).toLocaleDateString();
 
     const newPlantCard = document.createElement("div");
@@ -192,6 +211,4 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => console.error("Error:", error));
   };
-
-  const fetchPlantImages = () => {};
 });
