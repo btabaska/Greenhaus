@@ -16,34 +16,42 @@
     </style>
   </head>
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 mt-3">
-          <h4>Upload Plant Pics</h4>
-          <form
-            class="mt-4"
-            action="/upload"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <div class="form-group">
-              <input
-                type="file"
-                name="file"
-                id="input-files"
-                class="form-control-file border"
-              />
-            </div>
-            <h4>Select Your Plant by name</h2>
-            <select
-              name="plants"
-              id="plant-dropdown"
-              placeholder="Choose Plant"
-            ></select>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
+<head>
+  <title>Image Uploads | GreenHaus</title>
+  <!-- Materialize Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Materialized Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+  <link rel="shortcut icon" href="leaf64.png" type="image/png">
+  <!--Icons-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<nav>
+  <div class="nav-wrapper green lighten-2">
+      <img src="./css/leaf64.png" class="brand-logo"></img>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Haus</a></li>
+          <li><a href="/add-plant">Add Plant</a></li>
+          <li><a href="/plants">View Plants</a></li>
+          <li><a href="/users">Users</a></li>
+      </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 mt-3">
+        <h4>Node.js upload images</h4>
+
+        <form class="mt-4" action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <input type="file" name="file" id="input-files" class="form-control-file border" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
       </div>
       <hr />

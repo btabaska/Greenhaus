@@ -3,7 +3,8 @@ body {
   background-image: url("../css/palm-leaf.png");
 }
 .brand-logo {
-  padding: 10px;
+  margin-top: 2px;
+  margin-left: 10px;
 }
 .bkg-img {
   background-image: url("../css/sfconservatory-bkg.jpeg");
@@ -19,4 +20,26 @@ body {
 .plant-container {
   margin: 5px;
   padding: 5px;
+}
+
+.header {
+  margin: 0 auto;
+}
+
+.form {
+  padding: 50px;
+}
+
+.titlebox {
+  border: 5px solid #000000;
+  margin-top: 10px;
+}
+
+#title-icon {
+  margin: 0 auto;
+  max-height: 32px;
+}
+.title-text {
+  margin-right: 15px;
+  margin-left: 15px;
 }
