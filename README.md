@@ -21,6 +21,12 @@
 <a name="description"></a>
 
 ## Description:
+![image](https://user-images.githubusercontent.com/69176601/106257029-23f7f580-61c0-11eb-8f53-ebf6d5dba92d.png)
+![image](https://user-images.githubusercontent.com/69176601/106257081-2eb28a80-61c0-11eb-8cc4-25708e84d4b7.png)
+![image](https://user-images.githubusercontent.com/69176601/106257107-35410200-61c0-11eb-99d1-62ab0e6e98ff.png)
+![image](https://user-images.githubusercontent.com/69176601/106257139-3c681000-61c0-11eb-88e2-087cc547f5c0.png)
+![image](https://user-images.githubusercontent.com/69176601/106257171-45f17800-61c0-11eb-9e8e-e18da28633cf.png)
+
 
 This is Project 2 of our class. We needed to create an application that uses a new npm package or api as well as being able to have CRUD functionality. We created an app that helps you keep track of the plants you own. you can keep track of things like notes you leave about each plant, when you last watered it and even add photos on how it is doing.
 
@@ -34,7 +40,7 @@ To install, you need to clone the repo to your local. then you need to run npm i
 
 ## Usage Information:
 
-To use, you need to be in greenhaus folder, in the integrated terminal type node or nodemon server.js this will work assuming you followed the steps for installing. If you are trying to use this with the heroku app we launched, you may just click the link for the heroku application.
+To use, you need to be in greenhaus folder, in the integrated terminal type node or nodemon server.js this will work assuming you followed the steps for installing. If you are trying to use this with the heroku app we launched, you may just click the link for the heroku application. To use the upload photo part of our app, you need to type in /uploads at the end of the url because we did not have the time to finish the routes for it all.
 
 <a name="contributors"></a>
 
