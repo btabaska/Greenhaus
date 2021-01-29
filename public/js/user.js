@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log('Success in getting users:', users);
         const rowsToAdd = [];
         for (let i = 0; i < data.length; i++) {
           rowsToAdd.push(createuserRow(data[i]));

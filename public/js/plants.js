@@ -1,4 +1,3 @@
-//TODO ADD PLANTS JS BASED ON BLOG.JS
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded! 🚀");

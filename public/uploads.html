@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Upload Plant Pics</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <style>
-      div.preview-images > img {
-        width: 30%;
-      }
-    </style>
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Upload Plant Pics</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <style>
+    div.preview-images>img {
+      width: 30%;
+    }
+  </style>
+</head>
 
 <head>
   <title>Image Uploads | GreenHaus</title>
@@ -30,13 +28,13 @@
 
 <nav>
   <div class="nav-wrapper green lighten-2">
-      <img src="./css/leaf64.png" class="brand-logo"/>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/">Haus</a></li>
-          <li><a href="/add-plant">Add Plant</a></li>
-          <li><a href="/plants">View Plants</a></li>
-          <li><a href="/users">Users</a></li>
-      </ul>
+    <img src="./css/leaf64.png" class="brand-logo" />
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Haus</a></li>
+      <li><a href="/add-plant">Add Plant</a></li>
+      <li><a href="/plants">View Plants</a></li>
+      <li><a href="/users">Users</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -51,11 +49,7 @@
             <input type="file" name="file" id="input-files" class="form-control-file border" />
           </div>
           <h4>Select Your Plant by name</h4>
-            <select
-              name="plants"
-              id="plant-dropdown"
-              placeholder="Choose Plant"
-            ></select>
+          <select name="plants" id="plant-dropdown" placeholder="Choose Plant"></select>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
@@ -67,6 +61,8 @@
         </div>
       </div>
     </div>
+
+    <!-- script tags -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./js/upload.js"></script>
@@ -91,5 +87,6 @@
         });
       });
     </script>
-  </body>
+</body>
+
 </html>

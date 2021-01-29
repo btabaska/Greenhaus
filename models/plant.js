@@ -1,3 +1,4 @@
+//exports that create the table for plants in the database
 module.exports = (sequelize, DataTypes) => {
   const Plant = sequelize.define("Plant", {
     name: {

@@ -1,6 +1,4 @@
-//TODO ADD PLANT API ROUTES
-
-//requiring all models
+//Dependency
 const db = require("../models");
 
 //routes

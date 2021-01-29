@@ -1,4 +1,4 @@
-//requiring all models
+//Dependency
 const db = require("../models");
 
 //routes
@@ -13,15 +13,3 @@ module.exports = (app) => {
     }).then((dbImage) => res.send(dbImage.dataValues.data));
   });
 };
-
-// const blobToImage = (blob) => {
-//   return new Promise((resolve) => {
-//     const url = URL.createObjectURL(blob);
-//     let img = new Image();
-//     img.onload = () => {
-//       URL.revokeObjectURL(url);
-//       resolve(img);
-//     };
-//     img.src = url;
-//   });
-// };

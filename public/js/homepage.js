@@ -1,4 +1,3 @@
-//TODO ADD JS BASED OFF OF CMS.JS
 // Helper functions to show/hide elements
 const show = (el) => {
   el.style.display = "block";
