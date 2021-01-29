@@ -1,11 +1,10 @@
-//Still needs to be customized to fit project structure
-
 const fs = require("fs");
 
 const db = require("../models");
 const Image = db.Image;
 
 const uploadFiles = async (req, res) => {
+  console.log(req.body.plants);
   try {
     console.log(req.file);
 
@@ -16,6 +15,7 @@ const uploadFiles = async (req, res) => {
     Image.create({
       type: req.file.mimetype,
       name: req.file.originalname,
+      PlantId: req.body.plants,
       data: fs.readFileSync(
         __basedir + "/resources/static/assets/uploads/" + req.file.filename
       ),

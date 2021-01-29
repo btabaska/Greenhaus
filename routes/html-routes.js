@@ -8,11 +8,11 @@ const upload = require("../middleware/upload");
 
 // Routes
 let routes = (app) => {
-    //Home Page
-    router.get("/", (req, res) =>
+  //Home Page
+  router.get("/", (req, res) =>
     res.sendFile(path.join(__dirname, "../public/index.html"))
   );
-  
+
   //Add Plant Page
   router.get("/add-plant", (req, res) =>
     res.sendFile(path.join(__dirname, "../public/addplant.html"))
