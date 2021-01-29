@@ -30,7 +30,7 @@
 
 <nav>
   <div class="nav-wrapper green lighten-2">
-      <img src="./css/leaf64.png" class="brand-logo"></img>
+      <img src="./css/leaf64.png" class="brand-logo"/>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="/">Haus</a></li>
           <li><a href="/add-plant">Add Plant</a></li>
@@ -50,6 +50,12 @@
           <div class="form-group">
             <input type="file" name="file" id="input-files" class="form-control-file border" />
           </div>
+          <h4>Select Your Plant by name</h4>
+            <select
+              name="plants"
+              id="plant-dropdown"
+              placeholder="Choose Plant"
+            ></select>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
