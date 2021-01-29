@@ -1,8 +1,9 @@
+//Dependencies
 const fs = require("fs");
-
 const db = require("../models");
 const Image = db.Image;
 
+//function to upload the photo files to the database
 const uploadFiles = async (req, res) => {
   console.log(req.body.plants);
   try {

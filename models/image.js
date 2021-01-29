@@ -1,3 +1,4 @@
+//exporting database table for photos
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define("Image", {
     type: {

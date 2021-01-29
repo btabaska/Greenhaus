@@ -17,9 +17,10 @@ imageRoutes(app);
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
-
 db.sequelize.sync();
+
 //This is used in development to drop and re-sync the database, uncomment and run if you have DB issues
+
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });

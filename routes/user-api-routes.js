@@ -1,4 +1,4 @@
-//TODO ADD USER API ROUTES
+//Dependency
 const db = require("../models");
 
 module.exports = (app) => {
