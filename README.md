@@ -1,3 +1,14 @@
+Run With:
+npm i 
+ 
+Backend Start:
+node server.js
+ 
+http://localhost:8080/
+
+next:
+adopt add user page to add plants, add api call from previous project
+
 # GreenHaus
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
